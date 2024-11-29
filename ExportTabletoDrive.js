@@ -9,7 +9,6 @@ var fc = ee.FeatureCollection(
     )]
 );
 print("Feature collection: ", fc);
-Map.addLayer(fc, {}, ""); // silently ignored
 
 Export.table.toDrive({
     collection : fc,

@@ -6,6 +6,10 @@ Read more about how to use the `EE Tasks: run GEE script` command [here](https:/
 
 In addition, it contains some small related node scripts, including one that demonstrates the authentication and initialization of the earthengine JavaScript API.
 
+Here's a demonstration of the extension capabilities: 
+
+![eetasks-readme](https://raw.githubusercontent.com/gee-community/eetasks/main/docs/assets/geerunExample.gif)
+
 ## Sample GEE scripts
 
 To run these scripts in vscode, first install the [EE Tasks vscode extension](https://marketplace.visualstudio.com/items?itemName=gee-community.eetasks) and follow the [sign in instructions](https://github.com/lopezvoliver/eetasks/tree/auth#sign-in-options).
@@ -15,6 +19,7 @@ Finally, open the script to run, press `F1` and type `EE Tasks: run GEE script`.
 1. [helloGEE](./helloGEE.js): demonstrates the use of `print` either directly or as a callback function in `.getInfo()`
 2. [ExportTableToDrive](./ExportTabletoDrive.js): demonstrates a simple [Export.table.toDrive](https://developers.google.com/earth-engine/apidocs/export-table-todrive) with a call to [Map.addLayer](https://developers.google.com/earth-engine/apidocs/map-addlayer) ignored. 
 3. [ExportImageToDrive](./ExportImagetoDrive.js): demonstrates a simple [Export.Image.toDrive](https://developers.google.com/earth-engine/apidocs/export-image-todrive).
+4. [MapAddLayer](./MapAddLayer.js): demonstrates the new capability for opening an interactive Map, adding ee layers, and exporting a single image in the same script. 
 
 ## Node scripts 
 
@@ -68,17 +73,3 @@ $ node helloNodeGEE.js
 Hello from synchronous request
 Hello from callback
 ```
-
-### Testing xmlHttpRequest 
-
-This [small test](./testXmlHttpRequest.js) uses [XmlHttpRequest](https://www.npmjs.com/package/xmlhttprequest) to create a synchronous request, which is what the earthengine Javascript api uses for `.getInfo()` without a callback function. 
-
-This small test should simply return "undefined". 
-
-However, the same code in a vscode extension (e.g., [eetasks](https://github.com/gee-community/eetasks)) behaves wildly different depending on the OS:
-
-    - Linux: works as expected
-    - MacOS: An error is raised (but can be caught)
-    - Windows: crashes the Extension Host. 
-
-See: https://github.com/microsoft/vscode/issues/199492
